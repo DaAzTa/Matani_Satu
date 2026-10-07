@@ -1,0 +1,5 @@
+Simpan video .mp4 di sini, lalu daftarkan di js/data.js bagian VIDEOS.
+hero.mp4    = video latar di bagian atas (tanpa suara, pendek 10-20 detik)
+profil.mp4  = video profil kelurahan
+kegiatan.mp4 = dokumentasi kegiatan
+Video besar (>50 MB) lebih baik diunggah ke YouTube lalu isi ID-nya di "youtube".

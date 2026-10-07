@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Kelurahan Matani Satu — Profil</title>
+<meta name="description" content="Profil Kelurahan Matani Satu, Kecamatan Tomohon Tengah, Kota Tomohon: galeri foto, video, struktur kelurahan, dan peta." />
+<link rel="icon" href="assets/logo-kkt149.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+
+<!-- Library via CDN (tidak perlu npm install / bundler) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<!--
+  Urutan load PENTING: setiap file memakai const/komponen yang
+  didefinisikan oleh file sebelumnya (semua berbagi scope global
+  karena bukan ES module). Jangan mengubah urutan di bawah ini.
+-->
+<script type="text/babel" data-presets="react" src="js/icons.js"></script>
+<script type="text/babel" data-presets="react" src="js/data.js"></script>
+<script type="text/babel" data-presets="react" src="js/data-profil.js"></script>
+<script type="text/babel" data-presets="react" src="js/live-data.js"></script>
+<script type="text/babel" data-presets="react" src="js/hero-artwork.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Layout.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Header.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Hero.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Profil.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/DataProfil.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Galeri.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Video.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Struktur.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Peta.js"></script>
+<script type="text/babel" data-presets="react" src="js/components/Footer.js"></script>
+<script type="text/babel" data-presets="react" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* Palet mengikuti website profil Matani Satu (biru-batu tenang). */
+:root {
+  --bg: #edf3f8;
+  --bg-alt: #dfe9f1;
+  --card: #ffffff;
+  --text: #1e2b3a;
+  --text-muted: #556579;
+  --border: #d3dfea;
+  --primary: #4a6e8f;
+  --primary-dark: #34536f;
+  --primary-deep: #243d54;
+  --primary-soft: #4a6e8f1a;
+  --accent: #9cc0dd;
+  --danger: #c2413b;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101a24;
+    --bg-alt: #15212d;
+    --card: #1a2734;
+    --text: #e6eef5;
+    --text-muted: #a3b4c5;
+    --border: #2d3e50;
+    --primary: #7fa6c8;
+    --primary-dark: #5d86aa;
+    --primary-deep: #0c151e;
+    --primary-soft: #7fa6c822;
+    --danger: #ef6b65;
+    color-scheme: dark;
+  }
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@utility card {
+  @apply rounded-2xl border shadow-sm;
+  background: var(--card);
+  border-color: var(--border);
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 h-10 text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2;
+  outline-color: var(--primary);
+}
+@utility btn-primary {
+  @apply btn text-white;
+  background: var(--primary);
+  &:hover:not(:disabled) { background: var(--primary-dark); }
+}
+@utility btn-ghost {
+  @apply btn border;
+  border-color: var(--border);
+  background: var(--card);
+  &:hover:not(:disabled) { background: var(--bg-alt); }
+}
+@utility btn-danger {
+  @apply btn text-white;
+  background: var(--danger);
+  &:hover:not(:disabled) { filter: brightness(0.92); }
+}
+@utility icon-btn {
+  @apply inline-grid place-items-center h-9 w-9 rounded-lg transition-colors;
+  color: var(--text-muted);
+  &:hover { background: var(--bg-alt); color: var(--text); }
+}
+@utility label {
+  @apply block text-sm font-medium mb-1.5;
+}
+@utility input {
+  @apply w-full h-10 rounded-lg border px-3 text-sm outline-none transition-shadow;
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+  &:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+  &[aria-invalid="true"] { border-color: var(--danger); }
+}
+@utility field-error {
+  @apply mt-1 text-xs;
+  color: var(--danger);
+}
+@utility skeleton {
+  @apply rounded-md animate-pulse;
+  background: var(--bg-alt);
+}
+@utility badge {
+  @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
+}

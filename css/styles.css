@@ -1,0 +1,78 @@
+:root{
+  --bg:#EDF3F8;
+  --bg-alt:#DFE9F1;
+  --text:#1E2B3A;
+  --text-muted:#556579;
+  --card:#F9FBFD;
+  --border:#CBD9E6;
+  --red:#4A6E8F;
+  --red-dark:#34536F;
+  --red-deep:#243D54;
+  --gold:#9CC0DD;
+  --green:#4F7A72;
+  box-sizing:border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101A24;
+    --bg-alt:#15212D;
+    --text:#E6EEF5;
+    --text-muted:#A3B4C5;
+    --card:#1A2734;
+    --border:#2D3E50;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101A24;
+  --bg-alt:#15212D;
+  --text:#E6EEF5;
+  --text-muted:#A3B4C5;
+  --card:#1A2734;
+  --border:#2D3E50;
+}
+html{ scroll-behavior:smooth; scroll-padding-top: calc(env(safe-area-inset-top,0px) + 84px); }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.font-display{ font-family:'Fraunces', Georgia, 'Times New Roman', serif; }
+::selection{ background:var(--gold); color:#1E2B3A; }
+
+@keyframes ticker { 0%{ transform:translateX(0);} 100%{ transform:translateX(-50%);} }
+.ticker-track{ animation: ticker 28s linear infinite; }
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{ animation:none; }
+  *{ scroll-behavior:auto !important; }
+}
+
+.zigzag{
+  height:14px;
+  background-image:
+    linear-gradient(135deg, var(--gold) 25%, transparent 25%),
+    linear-gradient(225deg, var(--gold) 25%, transparent 25%),
+    linear-gradient(45deg, var(--red) 25%, transparent 25%),
+    linear-gradient(315deg, var(--red) 25%, transparent 25%);
+  background-position: 14px 0, 14px 0, 0 0, 0 0;
+  background-size: 14px 14px;
+  background-repeat: repeat-x;
+}
+
+.menu-panel{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+}
+.menu-panel.open{ max-height:520px; }
+
+.no-scrollbar::-webkit-scrollbar{ display:none; }
+.no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+
+.placeholder-stripes{
+  background-color: var(--bg-alt);
+  background-image: repeating-linear-gradient(135deg, transparent 0 10px, rgba(52,83,111,.06) 10px 20px);
+}

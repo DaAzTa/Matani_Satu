@@ -1,0 +1,39 @@
+# ---------- Secrets and API keys (NEVER commit) ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+serviceAccountKey.json
+firebase-adminsdk*.json
+supabase/.temp/
+
+# ---------- Private resident data (NIK, names) ----------
+*.xls*
+*.csv
+*.tsv
+*.doc*
+*.sql.bak
+*.dump
+backup/
+data-private/
+
+# ---------- Dependencies and build output ----------
+node_modules/
+dist/
+build/
+.vite/
+.wrangler/
+.firebase/
+.cache/
+
+# ---------- Logs ----------
+*.log
+npm-debug.log*
+
+# ---------- Computer and editor files ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

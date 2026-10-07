@@ -1,0 +1,11 @@
+{
+  "name": "profil-kelurahan-matani-satu",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Website profil Kelurahan Matani Satu, Tomohon Tengah",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "start:8080": "node server.js 8080"
+  }
+}

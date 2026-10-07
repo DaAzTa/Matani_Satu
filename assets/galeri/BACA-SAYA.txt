@@ -1,0 +1,3 @@
+Simpan foto galeri di sini (jpg/png/webp), lalu daftarkan namanya di js/data.js bagian GALERI.
+Contoh: foto-1.jpg, foto-2.jpg, ...
+Ukuran disarankan: lebar 1600px, di bawah 500 KB per foto.

@@ -1,0 +1,2 @@
+Simpan foto perangkat kelurahan di sini (lurah.jpg, sekretaris.jpg, ...), rasio persegi.
+Daftarkan di js/data.js bagian STRUKTUR.
