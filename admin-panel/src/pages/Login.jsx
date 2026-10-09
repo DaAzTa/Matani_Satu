@@ -8,6 +8,7 @@ import { ArrowLeft, Eye, EyeOff, Lock, Mail, ShieldCheck } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import FullPageLoader from "../components/FullPageLoader";
 import { isSupabaseConfigured as isFirebaseConfigured } from "../supabase";
+import Logo from "../components/Logo";
 
 const PESAN_ERROR = {
   "auth/invalid-credential": "Email atau kata sandi salah.",
@@ -58,6 +59,7 @@ export default function Login() {
           <ArrowLeft className="h-4 w-4" /> Kembali ke profil kelurahan
         </Link>
         <div>
+          <Logo size={88} className="mb-6 shadow-lg" />
           <p className="text-xs tracking-[0.2em] uppercase text-white/70">Sistem Informasi Kependudukan</p>
           <h1 className="font-display text-5xl font-semibold mt-3 leading-tight">
             Kelurahan
@@ -77,7 +79,9 @@ export default function Login() {
           <Link to="/" className="lg:hidden inline-flex items-center gap-2 text-sm text-[var(--text-muted)] mb-8">
             <ArrowLeft className="h-4 w-4" /> Kembali
           </Link>
-
+          
+          
+          <Logo size={56} className="lg:hidden mb-4 border border-[var(--border)]" />
           <span className="h-12 w-12 rounded-xl grid place-items-center bg-[var(--primary-soft)] text-[var(--primary)]">
             <ShieldCheck className="h-6 w-6" />
           </span>

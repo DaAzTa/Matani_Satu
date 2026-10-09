@@ -15,7 +15,7 @@ export async function getRingkasanPublik() {
 export async function hitungRingkasan() {
   const publik = await getRingkasanPublik();
   const { count, error } = await supabase
-    .from("penduduk").select("id", { count: "exact", head: true }).eq("perlu_verifikasi", true);
+    .from("penduduk").select("id", { count: "exact", head: true }).eq("perlu_verifikasi", true).eq("status_hidup", "HIDUP");
   if (error) throw error;
   return { ...publik, perluVerifikasi: count ?? 0 };
 }

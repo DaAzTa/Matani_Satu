@@ -15,6 +15,8 @@ import Login from "./pages/Login";
 const AdminLayout = lazy(() => import("./layouts/AdminLayout"));
 const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
 const DataKependudukan = lazy(() => import("./pages/admin/DataKependudukan"));
+const ProfilEditor = lazy(() => import("./pages/admin/ProfilEditor"));
+const Kematian = lazy(() => import("./pages/admin/Kematian"));
 
 export default function App() {
   return (
@@ -27,6 +29,8 @@ export default function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="penduduk" element={<DataKependudukan />} />
+          <Route path="profil" element={<ProfilEditor />} />
+          <Route path="kematian" element={<Kematian />} />
         </Route>
       </Route>
 

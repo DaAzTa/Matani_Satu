@@ -1,7 +1,7 @@
 // src/pages/admin/Dashboard.jsx — ringkasan data kependudukan (khusus admin).
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AlertTriangle, Baby, Globe, Home, RefreshCw, UserRound, Users } from "lucide-react";
+import { AlertTriangle, Baby, Globe, Home, RefreshCw, UserRound, Users, ClipboardList } from "lucide-react";
 import StatCard from "../../components/StatCard";
 import BarList from "../../components/BarList";
 import { hitungRingkasan, publikasikanRingkasan } from "../../services/statistikService";
@@ -72,11 +72,12 @@ export default function Dashboard() {
         </Link>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
         <StatCard icon={Users} label="Total Penduduk" value={stat?.total} note="jiwa" />
         <StatCard icon={Home} label="Kepala Keluarga" value={stat?.kepalaKeluarga} note="KK" tone="green" />
         <StatCard icon={UserRound} label="Laki-laki" value={stat?.lakiLaki} note={stat ? `${pctL}% dari total` : ""} tone="primary" />
         <StatCard icon={UserRound} label="Perempuan" value={stat?.perempuan} note={stat ? `${100 - pctL}% dari total` : ""} tone="rose" />
+        <StatCard icon={ClipboardList} label="Meninggal Tahun Ini" value={stat?.meninggalTahunIni} note={stat ? `tahun ${stat.tahun}` : ""} tone="amber" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">

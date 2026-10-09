@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "import:excel": "node scripts/import-excel.mjs",
     "set:admin": "node scripts/set-admin.mjs",
-    "import:supabase": "node --env-file=.env.local scripts/import-excel-supabase.mjs"
+    "import:supabase": "node --env-file=.env.local scripts/import-excel-supabase.mjs",
+    "seed:profil": "node --env-file=.env.local scripts/seed-profil.mjs"
   },
   "dependencies": {
     "firebase": "^12.19.0",

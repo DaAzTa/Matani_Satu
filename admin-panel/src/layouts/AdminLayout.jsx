@@ -2,19 +2,24 @@
 // Kerangka halaman admin: Sidebar (Dashboard, Data Penduduk, Logout) + Topbar.
 // Halaman anak dirender lewat <Outlet />. Di layar kecil sidebar menjadi drawer.
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { ExternalLink, LayoutDashboard, LogOut, Menu, Users, X } from "lucide-react";
+import { NavLink, Outlet, useLocation, useNavigate, Link } from "react-router-dom";
+import { ClipboardList, FileText, Globe, LayoutDashboard, LogOut, Menu, Users, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import Modal from "../components/Modal";
+import Logo from "../components/Logo";
 
 const MENU = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/penduduk", label: "Data Penduduk", icon: Users },
+  { to: "/admin/profil", label: "Profil Kelurahan", icon: FileText },
+  { to: "/admin/kematian", label: "Data Kematian", icon: ClipboardList },
 ];
 
 const JUDUL = {
   "/admin": "Dashboard",
   "/admin/penduduk": "Data Kependudukan",
+  "/admin/profil": "Profil Kelurahan",
+  "/admin/kematian": "Data Kematian",
 };
 
 export default function AdminLayout() {
@@ -37,7 +42,7 @@ export default function AdminLayout() {
   const Sidebar = (
     <div className="flex h-full flex-col bg-[var(--primary-deep)] text-white">
       <div className="flex items-center gap-3 px-5 h-16 border-b border-white/10">
-        <span className="h-9 w-9 rounded-lg bg-white/15 grid place-items-center font-display font-bold">M</span>
+          <Logo size={36} />
         <div className="leading-tight">
           <p className="text-[10px] tracking-widest text-white/60">ADMIN KELURAHAN</p>
           <p className="font-display font-semibold">Matani Satu</p>
@@ -63,10 +68,10 @@ export default function AdminLayout() {
       </nav>
 
       <div className="px-3 pb-4 space-y-1 border-t border-white/10 pt-4">
-        <a href="/" target="_blank" rel="noreferrer"
+        <Link to="/"
           className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-white/75 hover:bg-white/10 hover:text-white">
-          <ExternalLink className="h-[18px] w-[18px]" /> Lihat situs publik
-        </a>
+          <Globe className="h-[18px] w-[18px]" /> Lihat situs publik
+        </Link>
         <button onClick={() => setConfirmLogout(true)}
           className="w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-rose-200 hover:bg-rose-500/20 hover:text-white">
           <LogOut className="h-[18px] w-[18px]" /> Logout

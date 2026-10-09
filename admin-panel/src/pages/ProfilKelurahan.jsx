@@ -9,8 +9,11 @@ import { useAuth } from "../context/AuthContext";
 import { getRingkasanPublik } from "../services/statistikService";
 import BarList from "../components/BarList";
 import StatCard from "../components/StatCard";
+import ProfilLengkap from "../components/ProfilLengkap";
+import Logo from "../components/Logo";
 import { PROFIL } from "../data/profil";
 import { LINGKUNGAN, formatAngka } from "../utils/penduduk";
+import PetaWilayah from "../components/PetaWilayah";
 
 export default function ProfilKelurahan() {
   const { user, isAdmin } = useAuth();
@@ -30,10 +33,13 @@ export default function ProfilKelurahan() {
       {/* Header */}
       <header className="sticky top-0 z-30 bg-[var(--primary-deep)] text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="leading-tight">
-            <p className="text-[10px] tracking-widest text-white/60">KELURAHAN</p>
-            <p className="font-display font-semibold text-lg">Matani Satu</p>
-          </div>
+            <div className="flex items-center gap-3">
+              <Logo size={40} />
+              <div className="leading-tight">
+                <p className="text-[10px] tracking-widest text-white/60">KELURAHAN</p>
+                <p className="font-display font-semibold text-lg">Matani Satu</p>
+              </div>
+            </div>
           {user && isAdmin ? (
             <Link to="/admin" className="btn h-9 bg-white text-[var(--primary-deep)] hover:bg-white/90">
               <LayoutDashboard className="h-4 w-4" /> Dashboard Admin
@@ -48,8 +54,9 @@ export default function ProfilKelurahan() {
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-[var(--primary-deep)] to-[var(--primary-dark)] text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-24">
-          <p className="text-xs tracking-[0.2em] uppercase text-white/70">Profil Wilayah</p>
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-24">
+            <Logo size={128} className="hidden lg:grid absolute right-6 top-12 shadow-lg" />
+            <p className="text-xs tracking-[0.2em] uppercase text-white/70">Profil Wilayah</p>
           <h1 className="font-display text-4xl sm:text-5xl font-semibold mt-3">{PROFIL.nama}</h1>
           <p className="mt-3 flex items-center gap-2 text-white/80 text-sm">
             <MapPin className="h-4 w-4" /> Kec. {PROFIL.kecamatan}, {PROFIL.kota}, {PROFIL.provinsi} {PROFIL.kodePos}
@@ -70,6 +77,12 @@ export default function ProfilKelurahan() {
           {stat ? `Statistik kependudukan diperbarui ${diperbarui ?? "—"} oleh perangkat kelurahan.`
             : stat === null ? `Sumber: ${PROFIL.fallbackStat.sumber}.` : "Memuat statistik…"}
         </p>
+
+            {stat?.meninggalTahunIni !== undefined && (
+                <p className="text-xs text-[var(--text-muted)] -mt-3">
+                  Kematian tercatat tahun {stat.tahun}: <b>{formatAngka(stat.meninggalTahunIni)}</b> jiwa (tidak termasuk dalam jumlah penduduk).
+                </p>
+            )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <section className="card p-6 lg:col-span-2">
@@ -112,6 +125,9 @@ export default function ProfilKelurahan() {
             </ul>
           </section>
         </div>
+          {/* Profil kelurahan (from the Supabase table profil_kelurahan) */}
+          <ProfilLengkap />
+          <PetaWilayah />
       </main>
 
       <footer className="border-t border-[var(--border)] py-6 text-center text-xs text-[var(--text-muted)]">

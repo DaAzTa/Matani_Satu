@@ -53,7 +53,7 @@ export async function getAllPenduduk() {
   const semua = [];
   for (let dari = 0; ; dari += UKURAN) {
     const { data, error } = await supabase
-      .from(TABEL).select(KOLOM).order("nama").order("nik").range(dari, dari + UKURAN - 1);
+      .from(TABEL).select(KOLOM).eq("status_hidup", "HIDUP").order("nama").order("nik").range(dari, dari + UKURAN - 1);
     if (error) throw pesan(error);
     semua.push(...data);
     if (data.length < UKURAN) break;
