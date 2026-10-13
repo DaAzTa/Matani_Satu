@@ -12,6 +12,10 @@ import {
   AlertTriangle, ChevronLeft, ChevronRight, Pencil, Plus, RefreshCw, Search, Trash2, Users,
 } from "lucide-react";
 import Modal from "../../components/Modal";
+
+import ExportButtons from "../../components/ExportButtons";
+import { unduhPenduduk } from "../../utils/exportData";
+
 import {
   getAllPenduduk, addPenduduk, updatePenduduk, deletePenduduk,
 } from "../../services/pendudukService";
@@ -190,6 +194,8 @@ export default function DataKependudukan() {
           </p>
         </div>
         <div className="flex gap-2">
+            <ExportButtons disabled={loading || filtered.length === 0}
+            onDownload={(format) => unduhPenduduk(format, filtered, { cari: search, lingkungan: fLingkungan, jk: fJk, verifikasi: hanyaVerifikasi })} />
           <button className="btn-ghost" onClick={muatData} disabled={loading} aria-label="Muat ulang">
             <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
           </button>

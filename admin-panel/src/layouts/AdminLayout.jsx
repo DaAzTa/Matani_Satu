@@ -3,7 +3,7 @@
 // Halaman anak dirender lewat <Outlet />. Di layar kecil sidebar menjadi drawer.
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate, Link } from "react-router-dom";
-import { ClipboardList, FileText, Globe, LayoutDashboard, LogOut, Menu, Users, X } from "lucide-react";
+import { Baby, ClipboardList, FileText, Globe, History, LayoutDashboard, LogOut, Megaphone, Menu, Users, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import Modal from "../components/Modal";
 import Logo from "../components/Logo";
@@ -12,7 +12,11 @@ const MENU = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/penduduk", label: "Data Penduduk", icon: Users },
   { to: "/admin/profil", label: "Profil Kelurahan", icon: FileText },
+
+  { to: "/admin/kelahiran", label: "Data Kelahiran", icon: Baby },
   { to: "/admin/kematian", label: "Data Kematian", icon: ClipboardList },
+  { to: "/admin/pengumuman", label: "Pengumuman", icon: Megaphone },
+  { to: "/admin/log", label: "Log Aktivitas", icon: History },
 ];
 
 const JUDUL = {
@@ -20,6 +24,10 @@ const JUDUL = {
   "/admin/penduduk": "Data Kependudukan",
   "/admin/profil": "Profil Kelurahan",
   "/admin/kematian": "Data Kematian",
+
+  "/admin/kelahiran": "Data Kelahiran",
+  "/admin/pengumuman": "Pengumuman",
+  "/admin/log": "Log Aktivitas",
 };
 
 export default function AdminLayout() {

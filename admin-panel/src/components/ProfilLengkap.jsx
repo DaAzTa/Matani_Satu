@@ -24,7 +24,7 @@ function Butir({ x }) {
           ))}
         </dl>
       ) : (
-        <p className="mt-1.5 font-medium leading-snug">{x.v}</p>
+          <p className="mt-1.5 font-medium leading-snug whitespace-pre-line">{x.v}</p>
       )}
       {cat && <p className="mt-2 text-xs leading-relaxed text-[var(--text-muted)]">{cat}</p>}
     </div>

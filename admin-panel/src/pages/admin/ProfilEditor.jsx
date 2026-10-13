@@ -119,7 +119,7 @@ export default function ProfilEditor() {
           </p>
         )}
         <label htmlFor="intro" className="label mt-4">Pengantar bagian (opsional)</label>
-        <textarea id="intro" rows={2} className={AREA} value={draft.intro ?? ""}
+        <textarea id="intro" rows={4} className={AREA} value={draft.intro ?? ""}
           onChange={(e) => up((d) => P.setIntro(d, e.target.value))} />
       </div>
 

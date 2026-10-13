@@ -11,6 +11,7 @@ import BarList from "../components/BarList";
 import StatCard from "../components/StatCard";
 import ProfilLengkap from "../components/ProfilLengkap";
 import Logo from "../components/Logo";
+import PengumumanPublik from "../components/PengumumanPublik";
 import { PROFIL } from "../data/profil";
 import { LINGKUNGAN, formatAngka } from "../utils/penduduk";
 import PetaWilayah from "../components/PetaWilayah";
@@ -78,11 +79,14 @@ export default function ProfilKelurahan() {
             : stat === null ? `Sumber: ${PROFIL.fallbackStat.sumber}.` : "Memuat statistik…"}
         </p>
 
-            {stat?.meninggalTahunIni !== undefined && (
+              {stat?.meninggalTahunIni !== undefined && (
                 <p className="text-xs text-[var(--text-muted)] -mt-3">
-                  Kematian tercatat tahun {stat.tahun}: <b>{formatAngka(stat.meninggalTahunIni)}</b> jiwa (tidak termasuk dalam jumlah penduduk).
+                  Tahun {stat.tahun}: <b>{formatAngka(stat.kelahiranTahunIni ?? 0)}</b> kelahiran dan <b>{formatAngka(stat.meninggalTahunIni)}</b> kematian tercatat.
                 </p>
-            )}
+              )}
+
+              {/* Pengumuman dan berita (published items only) */}
+              <PengumumanPublik />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <section className="card p-6 lg:col-span-2">

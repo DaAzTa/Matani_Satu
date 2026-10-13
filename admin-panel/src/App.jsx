@@ -18,6 +18,10 @@ const DataKependudukan = lazy(() => import("./pages/admin/DataKependudukan"));
 const ProfilEditor = lazy(() => import("./pages/admin/ProfilEditor"));
 const Kematian = lazy(() => import("./pages/admin/Kematian"));
 
+const Kelahiran = lazy(() => import("./pages/admin/Kelahiran"));
+const Pengumuman = lazy(() => import("./pages/admin/Pengumuman"));
+const LogAktivitas = lazy(() => import("./pages/admin/LogAktivitas"));
+
 export default function App() {
   return (
     <Suspense fallback={<FullPageLoader />}>
@@ -31,6 +35,9 @@ export default function App() {
           <Route path="penduduk" element={<DataKependudukan />} />
           <Route path="profil" element={<ProfilEditor />} />
           <Route path="kematian" element={<Kematian />} />
+          <Route path="kelahiran" element={<Kelahiran />} />
+          <Route path="pengumuman" element={<Pengumuman />} />
+          <Route path="log" element={<LogAktivitas />} />
         </Route>
       </Route>
 

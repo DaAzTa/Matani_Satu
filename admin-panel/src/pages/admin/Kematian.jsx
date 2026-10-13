@@ -6,6 +6,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { ClipboardList, RotateCcw, Search } from "lucide-react";
 import StatCard from "../../components/StatCard";
+
+import ExportButtons from "../../components/ExportButtons";
+import { unduhKematian } from "../../utils/exportData";
+
 import {
   batalkanKematian, cariWargaHidup, catatKematian, getKematian, usiaSaatMeninggal,
 } from "../../services/kematianService";
@@ -184,6 +188,8 @@ export default function Kematian() {
             </select>
             <input className="input sm:w-56" placeholder="Cari nama / NIK…" value={filter}
               onChange={(e) => setFilter(e.target.value)} />
+              <ExportButtons disabled={!tampil.length}
+                onDownload={(format) => unduhKematian(format, tampil, { tahun, cari: filter })} />
           </div>
         </div>
 

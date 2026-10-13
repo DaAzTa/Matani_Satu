@@ -13,15 +13,17 @@ export default function Dashboard() {
   const [publishing, setPublishing] = useState(false);
   const [info, setInfo] = useState("");
 
+  const [lingkungan, setLingkungan] = useState("");
+
   const muat = useCallback(async () => {
     setError("");
     try {
-      setStat(await hitungRingkasan());
+      setStat(await hitungRingkasan(lingkungan));
     } catch (e) {
       console.error(e);
       setError("Gagal memuat statistik. Periksa koneksi dan pengaturan Supabase.");
     }
-  }, []);
+  }, [lingkungan]);
 
   useEffect(() => {
     muat();
@@ -49,8 +51,17 @@ export default function Dashboard() {
           <h2 className="text-xl font-bold">Ringkasan Kependudukan</h2>
           <p className="text-sm text-[var(--text-muted)]">Dihitung langsung dari tabel <code>penduduk</code> di Supabase.</p>
         </div>
-        <div className="flex gap-2">
+
+
+        <div className="flex flex-wrap gap-2">
+          <select className="input w-auto" value={lingkungan} aria-label="Filter lingkungan"
+            onChange={(e) => { setStat(null); setLingkungan(e.target.value); }}>
+            <option value="">Semua lingkungan</option>
+            {LINGKUNGAN.map((l) => <option key={l} value={l}>{l.replace("LINGKUNGAN", "Lingkungan")}</option>)}
+          </select>
           <button className="btn-ghost" onClick={() => { setStat(null); muat(); }}>
+
+
             <RefreshCw className="h-4 w-4" /> Muat ulang
           </button>
           <button className="btn-primary" onClick={publikasikan} disabled={publishing || !stat}>
@@ -72,11 +83,12 @@ export default function Dashboard() {
         </Link>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         <StatCard icon={Users} label="Total Penduduk" value={stat?.total} note="jiwa" />
         <StatCard icon={Home} label="Kepala Keluarga" value={stat?.kepalaKeluarga} note="KK" tone="green" />
         <StatCard icon={UserRound} label="Laki-laki" value={stat?.lakiLaki} note={stat ? `${pctL}% dari total` : ""} tone="primary" />
         <StatCard icon={UserRound} label="Perempuan" value={stat?.perempuan} note={stat ? `${100 - pctL}% dari total` : ""} tone="rose" />
+        <StatCard icon={Baby} label="Kelahiran Tahun Ini" value={stat?.kelahiranTahunIni} note={stat ? `tahun ${stat.tahun}` : ""} tone="green" />
         <StatCard icon={ClipboardList} label="Meninggal Tahun Ini" value={stat?.meninggalTahunIni} note={stat ? `tahun ${stat.tahun}` : ""} tone="amber" />
       </div>
 
