@@ -64,3 +64,8 @@ File yang belum ada otomatis tampil sebagai kotak placeholder.
 ---
 
 Dibuat oleh KKT 149 Posko Matani Satu.
+
+
+# Matani_Satu
+
+Farhan Tanvir Ahmed and Daniel Azarya Tafuama contributed to build this website.
