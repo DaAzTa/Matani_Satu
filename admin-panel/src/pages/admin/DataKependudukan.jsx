@@ -78,7 +78,7 @@ export default function DataKependudukan() {
   const [loadError, setLoadError] = useState("");
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get("q") || "");
   const [fLingkungan, setFLingkungan] = useState("");
   const [fJk, setFJk] = useState("");
   const hanyaVerifikasi = searchParams.get("filter") === "verifikasi";
@@ -257,7 +257,7 @@ export default function DataKependudukan() {
                   <td className="px-4 py-3">
                     <div className="font-medium flex items-center gap-2">
                       {p.nama || <span className="text-[var(--text-muted)] italic">(kosong)</span>}
-                      {p.perluVerifikasi && <span className="badge bg-amber-500/15 text-amber-700 dark:text-amber-300">Cek</span>}
+                      {p.perluVerifikasi && <span className="badge bg-amber-500/15 text-amber-700 dark:text-amber-300" title={p.alasanVerifikasi || "Perlu diperiksa"}>Cek</span>}
                     </div>
                     {p.hubungan && <div className="text-xs text-[var(--text-muted)]">{p.hubungan}</div>}
                   </td>

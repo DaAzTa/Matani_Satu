@@ -41,7 +41,7 @@ export default function ExportButtons({ onDownload, disabled }) {
         <Download className="h-4 w-4" /> Unduh <ChevronDown className="h-3.5 w-3.5" />
       </button>
       {buka && (
-        <div role="menu" className="absolute right-0 z-30 mt-2 w-64 rounded-xl border border-[var(--border)] bg-[var(--card)] p-2 shadow-lg">
+      <div role="menu" className="fixed inset-x-3 bottom-3 z-40 rounded-xl border border-[var(--border)] bg-[var(--card)] p-2 shadow-xl sm:absolute sm:inset-x-auto sm:bottom-auto sm:right-0 sm:z-30 sm:mt-2 sm:w-64 sm:shadow-lg">
           <button type="button" role="menuitem" className={item} disabled={!!sibuk} onClick={() => unduh("excel")}>
             <FileSpreadsheet className="h-4 w-4 text-emerald-600" />
             {sibuk === "excel" ? "Menyiapkan…" : "Excel (.xlsx)"}

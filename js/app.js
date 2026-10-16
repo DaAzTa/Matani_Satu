@@ -38,6 +38,7 @@ function App() {
       <Profil />
       <DataProfil />
       <Galeri />
+      <Kegiatan />
       <Video />
       <Struktur />
       <Peta />

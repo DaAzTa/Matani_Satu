@@ -181,7 +181,7 @@ export default function Kematian() {
       <section className="card p-5">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <h3 className="font-semibold">Daftar warga yang meninggal</h3>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <select className="input sm:w-36" value={tahun} onChange={(e) => setTahun(e.target.value)} aria-label="Filter tahun">
               <option value="semua">Semua tahun</option>
               {tahunTersedia.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -200,7 +200,25 @@ export default function Kematian() {
         ) : tampil.length === 0 ? (
           <p className="mt-4 text-sm text-[var(--text-muted)]">Belum ada catatan kematian.</p>
         ) : (
-          <div className="mt-4 overflow-x-auto">
+            <>
+  <ul className="mt-4 divide-y divide-[var(--border)] md:hidden">
+    {tampil.map((w) => (
+      <li key={w.id} className="flex items-start gap-3 py-3">
+        <div className="min-w-0 flex-1">
+          <p className="font-medium">{w.nama}</p>
+          <p className="font-mono text-xs text-[var(--text-muted)]">{w.nik}</p>
+          <p className="mt-1 text-sm">Meninggal {tgl(w.tanggal_meninggal)} · {usiaSaatMeninggal(w.tanggal_lahir, w.tanggal_meninggal) || "-"}</p>
+          <p className="text-xs text-[var(--text-muted)]">{[w.tempat_meninggal, w.sebab_meninggal].filter(Boolean).join(" · ") || "-"}</p>
+        </div>
+        <button type="button" className="icon-btn" aria-label={`Batalkan catatan kematian ${w.nama}`} onClick={() => batalkan(w)}><RotateCcw className="h-4 w-4" /></button>
+      </li>
+    ))}
+  </ul>
+  <div className="mt-4 hidden overflow-x-auto md:block">
+
+
+
+
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase tracking-wide text-[var(--text-muted)] border-b border-[var(--border)]">
@@ -237,10 +255,11 @@ export default function Kematian() {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+              </table>
+            </div>
+            </>
+          )}
+        </section>
 
       {toast && (
         <div role="status"

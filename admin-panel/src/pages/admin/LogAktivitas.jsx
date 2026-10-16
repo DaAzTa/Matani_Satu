@@ -13,6 +13,7 @@ const AKSI = {
   KEMATIAN: ["Kematian", "bg-amber-500/15 text-amber-700"],
   BATAL_KEMATIAN: ["Batal kematian", "bg-orange-500/15 text-orange-700"],
   UNDUH: ["Unduh", "bg-violet-500/15 text-violet-700"],
+  PERIKSA: ["Pemeriksaan data", "bg-indigo-500/15 text-indigo-700"],
 };
 const FIELD = {
   nik: "NIK", no_kk: "No. KK", nama: "Nama", tempat_lahir: "Tempat lahir", tanggal_lahir: "Tanggal lahir",

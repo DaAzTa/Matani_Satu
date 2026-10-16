@@ -98,3 +98,18 @@ body {
 @utility badge {
   @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
 }
+
+
+
+
+/* ---- Phone-friendly (added) ---------------------------------------------
+   Bigger touch targets, 16px text in fields (stops iPhone zoom on focus),
+   and no sideways scrolling of the whole page. */
+html { -webkit-text-size-adjust: 100%; }
+html, body { max-width: 100%; overflow-x: clip; }
+@media (max-width: 767px) {
+  .input, select.input { height: 44px; font-size: 16px; }
+  textarea { font-size: 16px; }
+  .btn, .btn-ghost, .btn-primary, .btn-danger { min-height: 44px; }
+  .icon-btn { height: 44px; width: 44px; }
+}

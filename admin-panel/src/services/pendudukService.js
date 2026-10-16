@@ -6,7 +6,7 @@ import { supabase } from "../supabase";
 
 const TABEL = "penduduk";
 const KOLOM =
-  "id,nik,no_kk,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,lingkungan,hubungan,agama,pekerjaan,status_kawin,pendidikan,perlu_verifikasi";
+  "id,nik,no_kk,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,lingkungan,hubungan,agama,pekerjaan,status_kawin,pendidikan,perlu_verifikasi,alasan_verifikasi";
 
 const dariDb = (r) => ({
   id: r.id,
@@ -24,6 +24,7 @@ const dariDb = (r) => ({
   statusKawin: r.status_kawin ?? "",
   pendidikan: r.pendidikan ?? "",
   perluVerifikasi: !!r.perlu_verifikasi,
+  alasanVerifikasi: r.alasan_verifikasi ?? "",
 });
 
 const keDb = (d) => ({

@@ -3,7 +3,7 @@
 // Halaman anak dirender lewat <Outlet />. Di layar kecil sidebar menjadi drawer.
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate, Link } from "react-router-dom";
-import { Baby, ClipboardList, FileText, Globe, History, LayoutDashboard, LogOut, Megaphone, Menu, Users, X } from "lucide-react";
+import { Baby, CalendarDays, ClipboardList, FileText, Globe, History, Home, Images, LayoutDashboard, LogOut, Megaphone, Menu, ShieldCheck, Users, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import Modal from "../components/Modal";
 import Logo from "../components/Logo";
@@ -11,11 +11,16 @@ import Logo from "../components/Logo";
 const MENU = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/penduduk", label: "Data Penduduk", icon: Users },
+  { to: "/admin/keluarga", label: "Data Keluarga", icon: Home },
+
   { to: "/admin/profil", label: "Profil Kelurahan", icon: FileText },
 
   { to: "/admin/kelahiran", label: "Data Kelahiran", icon: Baby },
   { to: "/admin/kematian", label: "Data Kematian", icon: ClipboardList },
   { to: "/admin/pengumuman", label: "Pengumuman", icon: Megaphone },
+  { to: "/admin/galeri", label: "Galeri Foto", icon: Images },
+  { to: "/admin/kegiatan", label: "Kalender Kegiatan", icon: CalendarDays },
+  { to: "/admin/kualitas-data", label: "Kualitas Data", icon: ShieldCheck },
   { to: "/admin/log", label: "Log Aktivitas", icon: History },
 ];
 
@@ -28,6 +33,12 @@ const JUDUL = {
   "/admin/kelahiran": "Data Kelahiran",
   "/admin/pengumuman": "Pengumuman",
   "/admin/log": "Log Aktivitas",
+
+  "/admin/keluarga": "Data Keluarga",
+  "/admin/galeri": "Galeri Foto",
+  "/admin/kegiatan": "Kalender Kegiatan",
+  "/admin/kualitas-data": "Kualitas Data",
+
 };
 
 export default function AdminLayout() {
@@ -61,7 +72,7 @@ export default function AdminLayout() {
         </button>
       </div>
 
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
         <p className="px-3 pb-2 text-[11px] font-semibold tracking-wider text-white/45">MENU</p>
         {MENU.map(({ to, label, icon: Icon, end }) => (
           <NavLink key={to} to={to} end={end}

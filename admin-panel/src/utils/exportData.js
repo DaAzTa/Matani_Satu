@@ -123,3 +123,32 @@ export function unduhKelahiran(format, baris, f = {}) {
     kolomExcel: KELAHIRAN,
   });
 }
+
+
+
+
+/* ---------------- Households ---------------- */
+const MASALAH_TEKS = {
+  tanpa_kepala: "Tanpa kepala keluarga", kepala_ganda: "Kepala keluarga ganda",
+  tanpa_kk: "Tanpa nomor KK", lingkungan_campur: "Lingkungan campur",
+};
+const KELUARGA = [
+  { header: "No", value: (_, i) => i + 1, width: 6 },
+  { header: "No. KK", value: (k) => (k.noKk === "(TANPA KK)" ? "" : k.noKk), width: 20 },
+  { header: "Kepala Keluarga", value: (k) => k.kepala.map((x) => x.nama).join(" / "), width: 30 },
+  { header: "Jumlah Anggota", value: (k) => k.jumlah, width: 14 },
+  { header: "Lingkungan", value: (k) => lingk(k.lingkungan), width: 14 },
+  { header: "Alamat", value: (k) => k.alamat, width: 40 },
+  { header: "Catatan", value: (k) => k.masalah.map((m) => MASALAH_TEKS[m]).join("; "), width: 36 },
+];
+/** baris = households (from kelompokkanKeluarga) */
+export function unduhKeluarga(format, baris, f = {}) {
+  const info = [f.lingkungan && lingk(f.lingkungan), f.masalah && (f.masalah === "semua" ? "Hanya bermasalah" : MASALAH_TEKS[f.masalah]), f.cari && `Pencarian: "${f.cari}"`].filter(Boolean);
+  return jalankan({
+    format, baris, halaman: "Data Keluarga",
+    judul: "Data Keluarga - Kelurahan Matani Satu",
+    subjudul: info.length ? `Filter: ${info.join("  |  ")}` : "Semua keluarga",
+    namaFile: `data-keluarga-${hariIni()}`,
+    kolomExcel: KELUARGA,
+  });
+}

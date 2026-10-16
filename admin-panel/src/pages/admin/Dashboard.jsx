@@ -6,6 +6,7 @@ import StatCard from "../../components/StatCard";
 import BarList from "../../components/BarList";
 import { hitungRingkasan, publikasikanRingkasan } from "../../services/statistikService";
 import { LINGKUNGAN, formatAngka } from "../../utils/penduduk";
+import TrenPanel from "../../components/Charts";
 
 export default function Dashboard() {
   const [stat, setStat] = useState(null);
@@ -128,6 +129,9 @@ export default function Dashboard() {
           <Link to="/admin/penduduk" className="btn-ghost w-full mt-6">Kelola data penduduk</Link>
         </section>
       </div>
+
+      {/* Trend charts and population pyramid (follow the neighborhood filter) */}
+      <TrenPanel lingkungan={lingkungan} />
     </div>
   );
 }

@@ -15,6 +15,8 @@ import PengumumanPublik from "../components/PengumumanPublik";
 import { PROFIL } from "../data/profil";
 import { LINGKUNGAN, formatAngka } from "../utils/penduduk";
 import PetaWilayah from "../components/PetaWilayah";
+import KalenderKegiatan from "../components/KalenderKegiatan";
+import GaleriPublik from "../components/GaleriPublik";
 
 export default function ProfilKelurahan() {
   const { user, isAdmin } = useAuth();
@@ -56,7 +58,9 @@ export default function ProfilKelurahan() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-[var(--primary-deep)] to-[var(--primary-dark)] text-white">
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-12 pb-24">
-            <Logo size={128} className="hidden lg:grid absolute right-6 top-12 shadow-lg" />
+            <div className="hidden lg:block absolute right-6 top-12">
+              <Logo size={128} className="shadow-lg" />
+            </div>
             <p className="text-xs tracking-[0.2em] uppercase text-white/70">Profil Wilayah</p>
           <h1 className="font-display text-4xl sm:text-5xl font-semibold mt-3">{PROFIL.nama}</h1>
           <p className="mt-3 flex items-center gap-2 text-white/80 text-sm">
@@ -87,6 +91,7 @@ export default function ProfilKelurahan() {
 
               {/* Pengumuman dan berita (published items only) */}
               <PengumumanPublik />
+              <KalenderKegiatan />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <section className="card p-6 lg:col-span-2">
@@ -131,6 +136,7 @@ export default function ProfilKelurahan() {
         </div>
           {/* Profil kelurahan (from the Supabase table profil_kelurahan) */}
           <ProfilLengkap />
+          <GaleriPublik />
           <PetaWilayah />
       </main>
 

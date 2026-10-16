@@ -202,7 +202,22 @@ export default function Kelahiran() {
           : gagal ? <p className="mt-4 text-sm text-[var(--danger)]">Gagal memuat data. Pastikan Anda sudah masuk dan SQL fitur tambahan sudah dijalankan.</p>
           : tampil.length === 0 ? <p className="mt-4 text-sm text-[var(--text-muted)]">Belum ada catatan kelahiran.</p>
           : (
-          <div className="mt-4 overflow-x-auto">
+<>
+<ul className="mt-4 divide-y divide-[var(--border)] md:hidden">
+  {tampil.map((b) => (
+    <li key={b.id} className="flex items-start gap-3 py-3">
+      <div className="min-w-0 flex-1">
+        <p className="font-medium">{b.nama} <span className="text-xs text-[var(--text-muted)]">({b.jk})</span></p>
+        <p className="font-mono text-xs text-[var(--text-muted)]">{b.nik}</p>
+        <p className="mt-1 text-sm">Lahir {tgl(b.tanggalLahir)} · {(b.lingkungan || "-").replace("LINGKUNGAN", "Lingkungan")}</p>
+        <p className="text-xs text-[var(--text-muted)]">Orang tua: {[b.namaAyah, b.namaIbu].filter(Boolean).join(" & ") || "-"}</p>
+      </div>
+      <button type="button" className="icon-btn" aria-label={`Batalkan catatan kelahiran ${b.nama}`} onClick={() => batalkan(b)}><RotateCcw className="h-4 w-4" /></button>
+    </li>
+  ))}
+</ul>
+<div className="mt-4 hidden overflow-x-auto md:block">
+
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase tracking-wide text-[var(--text-muted)] border-b border-[var(--border)]">
@@ -232,10 +247,11 @@ export default function Kelahiran() {
                   </tr>
                 ))}
               </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+              </table>
+            </div>
+            </>
+          )}
+        </section>
 
       {toast && (
         <div role="status" className={`fixed bottom-6 right-4 z-50 max-w-sm rounded-lg px-4 py-3 text-sm text-white shadow-lg ${toast.type === "error" ? "bg-[var(--danger)]" : "bg-emerald-600"}`}>

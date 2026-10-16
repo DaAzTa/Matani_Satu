@@ -22,6 +22,12 @@ const Kelahiran = lazy(() => import("./pages/admin/Kelahiran"));
 const Pengumuman = lazy(() => import("./pages/admin/Pengumuman"));
 const LogAktivitas = lazy(() => import("./pages/admin/LogAktivitas"));
 
+
+const Keluarga = lazy(() => import("./pages/admin/Keluarga"));
+const Galeri = lazy(() => import("./pages/admin/Galeri"));
+const Kegiatan = lazy(() => import("./pages/admin/Kegiatan"));
+const KualitasData = lazy(() => import("./pages/admin/KualitasData"));
+
 export default function App() {
   return (
     <Suspense fallback={<FullPageLoader />}>
@@ -38,6 +44,10 @@ export default function App() {
           <Route path="kelahiran" element={<Kelahiran />} />
           <Route path="pengumuman" element={<Pengumuman />} />
           <Route path="log" element={<LogAktivitas />} />
+          <Route path="keluarga" element={<Keluarga />} />
+          <Route path="galeri" element={<Galeri />} />
+          <Route path="kegiatan" element={<Kegiatan />} />
+          <Route path="kualitas-data" element={<KualitasData />} />
         </Route>
       </Route>
 
